@@ -1,6 +1,6 @@
 <template>
   <nav>   
-    <h2>Logo</h2>
+    <h2>Dogs</h2>
   </nav>
 </template>
 

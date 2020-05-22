@@ -1,5 +1,5 @@
 {
-  "name": "view-js-dogs",
+  "name": "vue-dogs",
   "version": "1.0.0",
   "private": true,
   "description": "",
@@ -44,15 +44,15 @@
     "last 2 versions",
     "not dead"
   ],
-  "_id": "view-js-dogs@1.0.0",
+  "_id": "vue-dogs@1.0.0",
   "bugs": {
-    "url": "https://github.com/dongqui/view-js-dogs/issues"
+    "url": "https://github.com/dongqui/vue-dogs/issues"
   },
-  "homepage": "https://github.com/dongqui/view-js-dogs#readme",
+  "homepage": "https://github.com/dongqui/vue-dogs#readme",
   "license": "ISC",
   "readme": "ERROR: No README data found!",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/dongqui/view-js-dogs.git"
+    "url": "git+https://github.com/dongqui/vue-dogs.git"
   }
 }

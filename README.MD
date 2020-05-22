@@ -1,4 +1,3 @@
-# view-js-dogs
 
 ## Project setup
 ```

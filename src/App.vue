@@ -1,15 +1,16 @@
 <template>
-  <Nav />
-  
+  <div id="app">
+    <Header />
+  </div>  
 </template>
 
 <script>
-import Nav from './components/Nav.vue'
+import Header from './components/Header.vue'
 
 export default {
   name: 'App',
   components: {
-    Nav
+    Header
   }
 }
 </script>

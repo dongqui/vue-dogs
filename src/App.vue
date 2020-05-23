@@ -6,11 +6,25 @@
 
 <script>
 import Header from './components/Header.vue'
+import { mapActions, mapState } from 'vuex';
+
+import { FETCH_BREEDS } from './store/type.action';
 
 export default {
   name: 'App',
+  created() {
+    this.FETCH_BREEDS()
+  },
   components: {
     Header
+  },
+  computed: {
+    ...mapState({
+      breedList: state => state.dogs.breedList,
+    })
+  },
+  methods: {
+    ...mapActions('dogs', [FETCH_BREEDS]),
   }
 }
 </script>

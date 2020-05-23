@@ -1,25 +1,44 @@
-<template>
-  <nav>   
-    <h2>Dogs</h2>
-  </nav>
+<template>  
+  <header>
+    <h2>Dogs</h2>    
+    <section>
+      <input type="text"><fa-icon :icon="['fas', 'search']" />
+    </section>
+  </header>  
 </template>
 
 <script>
 export default {
-  name: 'Nav',
+  name: 'Header',
 }
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
-nav {
-  height: 60px;
-  border-bottom: 1px solid #9b9b9b
-}
+  h2 {  
+    font-size: 3rem;
+    font-weight: 900;
+    text-align: center;
+    margin-top: 60px
+  }
 
-h2 {
-  line-height: 60px;
-  font-weight: 900;
-  margin-left: 30px;  
-}
+  section {
+    padding: 5px;
+    border: 1px solid black;
+    border-radius: 6px;
+    margin: 60px auto 0 auto;    
+    width: 40%;
+  }
+
+  input {
+    font-size: 1.4rem;
+    padding: 2px;
+    border: none;
+    width: 95%;
+    height: 40px;
+  }
+
+  input:focus {
+    outline: none;
+  }
 </style>

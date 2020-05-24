@@ -21,3 +21,9 @@ export const breeds = {
   success: (response) => mutaion(BREEDS[SUCCESS], response),
   failure: (error) => mutaion(BREEDS[FAILURE], error)
 }
+
+export const dogs = {
+  request: () => mutaion(DOGS[REQUEST]),
+  success: (response) => mutaion(DOGS[SUCCESS], response),
+  failure: (error) => mutaion(DOGS[FAILURE], error)
+}

@@ -1,31 +1,23 @@
 <template>
   <div id="app">
-    <Header />
+    <Header/>
+    <SideBar/>
+    <Main/>
   </div>  
 </template>
 
 <script>
-import Header from './components/Header.vue'
-import { mapActions, mapState } from 'vuex';
-
-import { FETCH_BREEDS } from './store/type.action';
+import Header from './components/Header.vue';
+import SideBar from './components/SideBar.vue';
+import Main from './components/Main.vue';
 
 export default {
   name: 'App',
-  created() {
-    this.FETCH_BREEDS()
-  },
   components: {
-    Header
-  },
-  computed: {
-    ...mapState({
-      breedList: state => state.dogs.breedList,
-    })
-  },
-  methods: {
-    ...mapActions('dogs', [FETCH_BREEDS]),
-  }
+    Header,
+    SideBar,
+    Main
+  },  
 }
 </script>
 
@@ -40,5 +32,10 @@ export default {
 * {
   padding: 0;
   margin: 0;
+  box-sizing: border-box;
+}
+
+li {
+  list-style: none;
 }
 </style>

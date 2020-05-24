@@ -1,12 +1,13 @@
 <template>
-  <aside>
+  <aside>    
     <section class="search-container">
-      <input type="text"><fa-icon :icon="['fas', 'search']" />
+      <input v-model="searchBreed" type="text"><fa-icon :icon="['fas', 'search']" />
     </section>
     <ul>
       <li
-        @click="fetchDogsByBreed(breed)"         
-        v-for="breed in breedList"
+        @click="clickBreed(breed)"          
+        v-for="breed in filteredBreedList"
+        :class="{selected: breed === selectedBreed}"
         :key="breed"
       >
         {{breed}}
@@ -22,18 +23,37 @@ export default {
   created() {    
     this.fetchBreeds()
   },
+  data() {
+    return {
+      selectedBreed: null,
+      searchBreed: '',
+    }
+  },
   computed: {
     ...mapState({
       breedList: state => state.dogs.breedList,
-    })
+    }),
+    filteredBreedList() {
+      if (!this.searchBreed) return this.breedList;
+      return this.breedList.filter(v => v.indexOf(this.searchBreed) > -1)
+    }
   },
   methods: {
+    clickBreed(breed) {      
+      if (breed === this.selectedBreed) return;
+      this.selectedBreed = breed;
+      this.fetchDogsByBreed(breed);
+    },
     ...mapActions('dogs', ['fetchBreeds', 'fetchDogsByBreed']),
   }
 }
 </script>
 
 <style scoped>
+  .selected {
+    background-color: #f5f5f5;
+  }
+
   aside {
     width: 20%;
     height: 100vh;
@@ -50,6 +70,7 @@ export default {
 
   li:hover {
     background-color: #f5f5f5;
+    cursor: pointer;
   }
 
   .search-container {

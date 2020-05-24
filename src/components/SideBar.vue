@@ -1,32 +1,70 @@
-
 <template>
-  <section>
+  <aside>
+    <section class="search-container">
       <input type="text"><fa-icon :icon="['fas', 'search']" />
-  </section>
+    </section>
+    <ul>
+      <li
+        @click="fetchDogsByBreed(breed)"         
+        v-for="breed in breedList"
+        :key="breed"
+      >
+        {{breed}}
+      </li>
+    </ul>
+  </aside>  
 </template>
-
 <script>
+import { mapActions, mapState } from 'vuex';
+
 export default {
-  name: 'Header',
+  name: 'SideBar',
+  created() {    
+    this.fetchBreeds()
+  },
+  computed: {
+    ...mapState({
+      breedList: state => state.dogs.breedList,
+    })
+  },
+  methods: {
+    ...mapActions('dogs', ['fetchBreeds', 'fetchDogsByBreed']),
+  }
 }
 </script>
 
-<!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
-  section {
+  aside {
+    width: 20%;
+    height: 100vh;
+    border-right: 1px solid black;
+    float: left;
+    overflow: auto;
+  }
+
+  li {
+    text-align: center;
+    padding: 20px;
+    font-weight: 600;
+  }
+
+  li:hover {
+    background-color: #f5f5f5;
+  }
+
+  .search-container {
     padding: 5px;
     border: 1px solid black;
     border-radius: 6px;
-    margin: 60px auto 0 auto;    
-    width: 40%;
+    margin: 10px auto;  
+    width: 90%;
   }
 
   input {
     font-size: 1.4rem;
     padding: 2px;
     border: none;
-    width: 95%;
-    height: 40px;
+    width: 90%;    
   }
 
   input:focus {

@@ -1,7 +1,5 @@
-import { breeds } from './type.mutation';
-import { fetchBreedsApi } from '../api/api.dogs';
-
-export const FETCH_BREEDS = 'FETCH_BREEDS';
+import { breeds, dogs } from './type.mutation';
+import { fetchBreedsApi, fetchDogsByBreedApi } from '../api/api.dogs';
 
 const fetchEntity = (entity, apiFn) => async (context, params) => {
   context.commit(...entity.request())
@@ -14,3 +12,4 @@ const fetchEntity = (entity, apiFn) => async (context, params) => {
 }
 
 export const fetchBreeds = fetchEntity(breeds, fetchBreedsApi);
+export const fetchDogsByBreed = fetchEntity(dogs, fetchDogsByBreedApi);

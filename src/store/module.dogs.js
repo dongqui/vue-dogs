@@ -1,10 +1,13 @@
-import { fetchBreeds, FETCH_BREEDS } from './type.action';
-import { BREEDS } from './type.mutation';
+import { fetchBreeds, fetchDogsByBreed } from './type.action';
+import { BREEDS, DOGS } from './type.mutation';
 
  
 const state = {
-  breedList: {},
+  breedList: [],
+  breedSubList: {},
   breed: null,
+  dogsPhotoList: [],
+  selectedDog: null,
 }
 
 const getters = {
@@ -12,19 +15,40 @@ const getters = {
 }
 
 const actions = {
-  [FETCH_BREEDS]: fetchBreeds,
+  fetchBreeds, fetchDogsByBreed
 }
 
 const mutations = {
   [BREEDS.REQUEST]() {
-    console.log('request start')
+    console.log('breeds request start')
   },
-  [BREEDS.SUCCESS](state, res) {    
-    state.breedList = res.message;
+  [BREEDS.SUCCESS](state, res) {        
+    state.breedList = Object.keys(res.message);
+
+    const subListObj = {};
+    for (const [ key, value ] of Object.entries(res.message)) {
+      if (value.length) {
+        subListObj[key] = value;
+      }
+    }
+    state.subBreedList = subListObj;
   },
   [BREEDS.FAILURE](error) {
     console.log(error);
-  }
+  },
+
+
+  [DOGS.REQUEST]() {
+    console.log('dogs request start')
+  },
+  [DOGS.SUCCESS](state, res) {  
+    state.dogsPhotoList = res.message;
+  },
+  [DOGS.FAILURE](error) {
+    console.log(error);
+  },
+
+
 }
 
 export default {

@@ -8,6 +8,7 @@ const state = {
   breed: null,
   dogsPhotoList: [],
   selectedDog: null,
+  dogsIsLoading: false,
 }
 
 const getters = {
@@ -39,13 +40,15 @@ const mutations = {
 
 
   [DOGS.REQUEST]() {
-    console.log('dogs request start')
+    state.dogsIsLoading= true;
   },
   [DOGS.SUCCESS](state, res) {  
     state.dogsPhotoList = res.message;
+    state.dogsIsLoading= false;
   },
   [DOGS.FAILURE](error) {
     console.log(error);
+    state.dogsIsLoading= false;
   },
 
 

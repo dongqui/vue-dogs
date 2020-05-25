@@ -1,10 +1,15 @@
 <template>
   <main>
-    <Photo             
-      v-for="url in dogsPhotoList" 
-      :key="url"
-      :photoUrl="url" 
-    />
+    <section v-if="dogsIsLoading" class="loading">
+      <fa-icon :icon="['fas', 'spinner']" size="4x" spin/>  
+    </section>  
+    <section class="contents">
+      <Photo             
+        v-for="url in dogsPhotoList" 
+        :key="url"
+        :photoUrl="url" 
+      />
+    </section>
   </main>
 </template>
 
@@ -17,11 +22,10 @@ export default {
   components: {
     Photo
   },
-  created() {    
-  },
   computed: {
     ...mapState({
       dogsPhotoList: state => state.dogs.dogsPhotoList,
+      dogsIsLoading: state => state.dogs.dogsIsLoading,
     })
   },
   methods: {      
@@ -30,7 +34,14 @@ export default {
 </script>
 
 <style scoped>
-  main {
+  .loading {
+    display: inline-block; 
+    position: absolute;
+    left: 60%;
+    top: 40%;
+  }
+
+  .contents {
     overflow: auto;
     float: left;
     height: 100vh;
